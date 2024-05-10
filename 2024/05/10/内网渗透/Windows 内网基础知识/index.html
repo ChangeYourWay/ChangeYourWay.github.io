@@ -1,0 +1,394 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.8" theme-name="Stellar" theme-version="1.26.8">
+  
+  <meta name="generator" content="Hexo 7.1.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Windows 内网基础知识 - 妙尽璇机</title>
+
+  
+    <meta name="description" content="本文将会详细介绍工作组、域、域控制器、父域、子域、域树、域森林（也叫域林）、活动目录、DMZ、域内权限等内网知识。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 内网基础知识">
+<meta property="og:url" content="https://changeyourway.github.io/2024/05/10/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/Windows%20%E5%86%85%E7%BD%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="妙尽璇机">
+<meta property="og:description" content="本文将会详细介绍工作组、域、域控制器、父域、子域、域树、域森林（也叫域林）、活动目录、DMZ、域内权限等内网知识。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.3001.net/images/20210727/1627369986_60ffb20231438bd099959.png!small">
+<meta property="og:image" content="https://jiwo.org/editor_upload/20200623/20200623100806_55838.png">
+<meta property="og:image" content="https://jiwo.org/editor_upload/20200623/20200623100900_72312.png">
+<meta property="article:published_time" content="2024-05-10T11:53:40.085Z">
+<meta property="article:modified_time" content="2024-04-27T02:24:15.957Z">
+<meta property="article:author" content="妙尽璇机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://image.3001.net/images/20210727/1627369986_60ffb20231438bd099959.png!small">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.26.8">
+
+  
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  
+
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png"><link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest"><link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
+</head>
+<body>
+
+<div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/167730365?v=4" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">妙尽璇机</div><div class="sub cap">以真理之名，超越往昔</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="专栏" href="/topic/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/explore/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%86%85%E7%BD%91%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">一、内网基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">1.1 基础知识</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+
+
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    
+<div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-05-10T11:53:40.085Z">2024-05-10</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-04-27T02:24:15.957Z">2024-04-27</time></span></div></div>
+</div>
+
+    
+    <div class="bottom">
+      <div class="text-area">
+        <h1 class="text title"><span>Windows 内网基础知识</span></h1>
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>本文将会详细介绍工作组、域、域控制器、父域、子域、域树、域森林（也叫域林）、活动目录、DMZ、域内权限等内网知识。</p>
+<span id="more"></span>
+
+<h2 id="一、内网基础知识"><a href="#一、内网基础知识" class="headerlink" title="一、内网基础知识"></a><strong>一、内网基础知识</strong></h2><h3 id="1-1-基础知识"><a href="#1-1-基础知识" class="headerlink" title="1.1 基础知识"></a><strong>1.1 基础知识</strong></h3><p>在研究的时候通常会听到工作组、域、域控制器、父域、子域、域树、域森林（也叫域林）、活动目录、DMZ、域内权限等名词，接下来讲得就是这些名词各指的是什么，之间有什么区别。</p>
+<h6 id="1-1-1-工作组"><a href="#1-1-1-工作组" class="headerlink" title="1.1.1 工作组"></a><strong>1.1.1 工作组</strong></h6><p>将局域网内的计算机按照需要分组。</p>
+<p>加入工作组后，在网络中别人可以访问我们的共享资源，我们也可以加入同一网络中的任何工作组了，工作组可以自由的进入和退出，方便计算机互相访问，但是工作组没有集中管理的作用，工作组的所有计算机都是对等的!</p>
+<h6 id="1-1-2-域"><a href="#1-1-2-域" class="headerlink" title="1.1.2 域"></a><strong>1.1.2 域</strong></h6><p><strong>什么是域:</strong></p>
+<p>域可以理解为升级版的工作组，是一个有安全边界的计算机集合，和工作组相比较而言，域安全管理控制机制更严格，如果用户们要访问域需要以合法的身份登录域才行，而用户登录域后能访问到的资源权限，还要取决于用户域内的身份。域内资源由一台域控制器（Domain Controller，DC）集中管理，用户名和密码是放在域控制器去验证的。</p>
+<p><strong>什么是域控制器（Domain Controller，DC）:</strong></p>
+<p>域控制器是域中一台类似管理服务器的计算机，通俗可以理解成域控制器是一个单位的门禁系统，负责所有接入的计算机和用户的验证工作，在域环境中各个计算机要想互相访问，需要经过域的审核才行。重要的是域控制器中存在这个域的账户和密码，属于这个域的计算机等信息构成的数据库。当计算机连接到域时，域控制器首先会鉴别计算机是否属于这个域，用户在进行登录用户名密码时，会验证用户名和密码是否存在和正确，如果有一项不正确，域控制器就会拒绝该计算机访问域，相对而言就计算机不通过域控制器就无法访问相对应的资源权限。<br>通过以上理解，域控制器就是整个域的通信枢纽，所有的权限身份验证都在域控制器上进行着，所以在渗透中，散列值就体现出来了，域内所有用来验证身份的账号和密码散列值都保存在域控制器中。</p>
+<p><strong>域的几种环境：</strong></p>
+<p><strong>1、单域</strong></p>
+<p>即只有一个域的网络环境，一般需要两台 DC ，一台 DC ，另一台备用DC（容灾）。</p>
+<p><strong>2、父域和子域</strong></p>
+<p>域数量过多的情况下需要进行管理，进行分级管理的情况下，第一个域称为父域，下级各部分的域称为该域的子域。</p>
+<p>举个例子理解下，一大型公司存在各个分公司，分公司位于不同的地点，这种情况就需要父域和子域，如果把所有分公司都放在一个域内，在信息交互的时候会出现带宽高延迟高，浪费非常多的时间，交互的信息量变大不会压缩的情况下会导致崩溃的现象，而在多个域之间进行信息交互，量就相对较小，且信息量可以压缩。在管理和安全层面，不同的子域也可以指定特定的安全策略。</p>
+<p>在子域和父域这里就了解到，一个域管理员只能管理本域，不能访问和管理其他域，如果需要互相访问则需要建立信任关系，信任关系就是连接不同域的桥梁，不同域之间建立了信任关系后，就能实现网络资源共享与管理，通信及数据传输等。</p>
+<p><strong>3、域树</strong></p>
+<p>多个域通过建立信任关系组成的集合。若两个域之间需要相互访问，需要建立<strong>信任关系</strong>（Trust Relation），通过信任关系可以将父子域连接成树状结构。</p>
+<p>继续了解下域树的阶层概念，域树的阶层是按照点号隔开区分的，一个点号代表一个层次，例如：域 yizhi.xiaobai.com 的级别比域 xiaobai.com 级别低。子域只能使用父域的名字作为其域名的后缀，所以在域树中域的名字是连续的。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://image.3001.net/images/20210727/1627369986_60ffb20231438bd099959.png!small" alt="图片.png"></p>
+<p><strong>4、域森林</strong></p>
+<p>多个域树通过建立信任关系后的集合。</p>
+<p>例如在一个公司进行兼并的时候，公司目前使用的域树是 abc.com ，被兼并的公司存在自己的域树为 dayu.net ，在这种情况下进行兼并，就需要域树 abc.com 和域树 dayu.net 之间建立信任关系来构成域森林。</p>
+<p><strong>5、域名服务器</strong></p>
+<p>域名服务器就是 DNS 服务器，是用于实现域名与对应的 IP 地址相互转换的服务器。</p>
+<p>回头观望下域树的知识可知，域树中的域名和 DNS 域名非常的相似（ xiaobai.com 等)，实际上，域中的计算机是使用 DNS 来定位域控制器、服务器、网络服务等，所以域的名字就是 DNS 域的名字。</p>
+<p>所 以在内网渗透中，大多数情况都是通过寻找 DNS 服务器来确定域控制器的位置，因为域控制器和 DNS 服务器都配置在同一台机器上。</p>
+<h6 id="1-1-3-活动目录"><a href="#1-1-3-活动目录" class="headerlink" title="1.1.3 活动目录"></a><strong>1.1.3 活动目录</strong></h6><p>活动目录（Active Directory，AD）是指域环境中提供目录服务的组件。<br>首先来了解下目录，目录用于存储有关的网络对象（例如，用户、组、计算机、共享资源、打印机和联系人等）的信息。目录服务是指帮助用户快速准确的从目录中找到其所需要的信息服务。所以活动目录实现了目录服务，为企业提供了网络环境的集中式管理机制。</p>
+<p>如果是一本字典，活动目录就是索引。</p>
+<p>目录数据存储在域控制器上的 Ntds.dit 文件中。我们建议将该文件存储在一个 NTFS 分区上。有些数据保存在目录数据库文件中，而有些数据则保存在一个被复制的文件系统上，例如登录脚本和组策略。</p>
+<p>注：活动目录功能</p>
+<ul>
+<li>账号集中管理：所有的账号均存储在服务器中，方便执行命令和密码重置等操作。</li>
+<li>软件集中管理：统一推送软件、安装网络打印机等。利用软件发布策略分发软件，可以让用户自由选择需要安装的软件。</li>
+<li>环境集中管理：统一客户端桌面、ID、TCP&#x2F;IP 协议等设置。</li>
+<li>增强安全性：统一部署杀毒软件和病毒扫描任务、集中管理用户的计算机访问权限、统—制定用户密码策略等。可以监控网络、对资料进行统一管理。</li>
+<li>更可靠，更短的宕(dang)机时间。例如，利用活动目录控制用户访问权限，利用群集、负载均衡等技术对文件服务器进行容灾设置。</li>
+<li>活动目录是微软提供的统一管理基础平台，工 SA 、Exchange、SMS 等都依赖这个平台。</li>
+</ul>
+<h6 id="1-1-4-域控制器和活动目录的区别"><a href="#1-1-4-域控制器和活动目录的区别" class="headerlink" title="1.1.4 域控制器和活动目录的区别"></a><strong>1.1.4 域控制器和活动目录的区别</strong></h6><p>把网络中的众多对象（计算机、用户、用户组、打印机、共享文件等）分门别类、并然有序的放在一个大的仓库中，并将检索信息整理好，以便查找、管理和使用这些对象（资源)。这个拥有层次结构的数据库，就是活动目录数据库，简称 AD 库。</p>
+<p>那么我们应该把这个数据库放到哪套计算机上呢？要实现域环境，其实就是要安装 AD 。如果内网中的一台计算机上安装了活动目录（AD），它就成了域控制器（DC）用于存储活动目录数据库的计算机。</p>
+<p>域控制器就是安装了活动目录（Active Directory）的计算机。</p>
+<h6 id="1-1-5-安全域的划分"><a href="#1-1-5-安全域的划分" class="headerlink" title="1.1.5 安全域的划分"></a><strong>1.1.5 安全域的划分</strong></h6><p>在一个用路由器连接的内网中，可以将网络划分为三个区域：安全级别最高的内网，安全级别中等的 DMZ ，安全级别最低的外网。这三个区域负责完成不同的任务，因此需要设置不同的访问策略。接下来这里详细的讲解了防火墙的一些场景，在三个区域中如何制定 ACL 的思路。</p>
+<ol>
+<li><strong>内网</strong>（安全级别最高）：分为核心区（存储企业最重要的数据，只有很少的主机能够访问）和办公区（员工日常工作区，一般能够访问 DMZ ，部分主机可以访问核心区）</li>
+<li><strong>DMZ</strong>（Demilitarized Zone，边界网络，隔离区，安全级别中等）：作为内网中安全系统和非安全系统之间的缓冲区，用于对外提供服务，一般可以放置一些必须公开的服务器设施</li>
+<li><strong>外网</strong>（Internet，安全级别最低）</li>
+</ol>
+<h6 id="1-1-6-域中计算机的分类"><a href="#1-1-6-域中计算机的分类" class="headerlink" title="1.1.6 域中计算机的分类"></a><strong>1.1.6 域中计算机的分类</strong></h6><p>在域结构的网络中，计算机的身份是不平等的，有域控制器、成员服务器、客户机、独立服务器四种类型。</p>
+<p>1、<strong>域控制器</strong></p>
+<p>域控制器用于管理所有的网络访问，包括登录服务器、访问共享目录和资源，域控制器中存储了域内所有的账户和策略信息，包括安全策略、用户身份验证信息和账户信息。</p>
+<p>之前也有了解到很多域控制器，在大型域环境中，存在多个域控制器的情况下，部分域控制器瘫痪，网络访问也不会受到影响，提高了网络的安全性和稳定性。</p>
+<p>2、<strong>成员服务器</strong></p>
+<p>安装了服务器操作系统（比如 Windows Server ）并加入了域，但没有安装活动目录的计算机，主要任务是提供网络资源。</p>
+<p>3、<strong>客户机</strong></p>
+<p>安装了其他操作系统的计算机，利用这些计算机和域中的账户就可以登录到域。</p>
+<p>4、<strong>独立服务器</strong></p>
+<p>独立服务器和域没有关系，服务器不加入域、也不安装活动目录就是独立服务器。</p>
+<h6 id="1-1-7-域内权限解读"><a href="#1-1-7-域内权限解读" class="headerlink" title="1.1.7 域内权限解读"></a><strong>1.1.7 域内权限解读</strong></h6><p>1、<strong>域本地组</strong></p>
+<p>多域用户访问单域资源（访问同一个域）。</p>
+<p>可以从任何域添加用户账户、通用组和全局组，但只能在其所在域内指派权限。域本地组不能嵌套于其他组中。它主要是用于授予位于本域资源的访问权限。</p>
+<p>2、<strong>全局组</strong></p>
+<p>单域用户访问多域资源（必须是一个域里面的用户）。</p>
+<p>只能在创建该全局组的域中添加用户和全局组。可以在域森林的任何域内指派权限。全局组可以嵌套在其他组中。</p>
+<p>可以将某个全局组添加到同一个域的另一个全局组中，或者添加到其他域的通用组和域本地组中（不能添加到不同域的全局组中，全局组只能在创建它的域中添加用户和组）。虽然可以通过全局组授予用户访问任何域内资源的权限，但一般不直接用它来进行权限管理。</p>
+<p>全局组和域本地组的关系，与域用户账号和本地账号的关系类似。域用户账号可以在全局使用，即在本域和其他关系的其他域中都可以使用，而本地账号只能在本机中使用。例如：将用户张三（Z3）添加到域本地组 Administrators 中，并不能使 Z3 对非 DC 的域成员计算机拥有任何特权。但若将 Z3 添加到全局组  Domain Admins 中，用户张三就成为了域管理员了（可以在全局使用，对域成员计算机拥有特权）。</p>
+<p>3、<strong>通用组</strong></p>
+<p>多域用户访问多域资源。</p>
+<p>通用组的成员可包括域树或域林中任何域的用户账号、全局组和其他通用组，可以在该域森林的任何域中指派权限，可以嵌套在其他组中，非常适合在域森林内的跨域访问中使用。不过，通用组的成员不是保存在各自的域控制器中，而是保存在全局编录（GC）中，任何变化都会导致全林复制。</p>
+<p>全局编录通常用于存储一些不经常发生变化的信息。由于用户账号信息是经常变化的，建议不要直接将用户账号添加到通用组中，而要先将用户账号添加到全局组中，再把这些相对稳定的全局组添加到通用组中。</p>
+<p><strong>简单一句话概括：</strong></p>
+<ul>
+<li>域本地组：来自全林，作用于本域</li>
+<li>全局组：来自本域，作用于全林</li>
+<li>通用组：来自全林，作用于全林</li>
+</ul>
+<p>4、<strong>A-G-DL-P 策略</strong></p>
+<p>A-G-DL-P 策略是指将用户账号添加到全局组中，再将全局组添加到域本地组中，然后为域本地组分配资源权限。</p>
+<ul>
+<li>A 表示用户账号（Account）</li>
+<li>G 表示全局组（Global Group）</li>
+<li>U 表示通用组（Universal Group）</li>
+<li>DL 表示域本地组（Domain Local Group）</li>
+<li>P 表示资源权限（Permission）</li>
+</ul>
+<p>按照 A-G-DL-P 策略对用户进行组织和管理是非常容易的。在 A-G-DL-P 策略形成以后，当需要给一个用户添加某个权限时，只要把这个用户添加到某个域本地组中就行了。</p>
+<p>5、<strong>内置组</strong></p>
+<p>在安装域控制器时，系统会自动生成一些组，称为内置组。内置组定义了一些常用的权限。通过将用户添加到内置组中可以使用户获得相应的权限。</p>
+<p>活动目录控制台窗口的 Builtin 和 Users 组织单元中的组就是内置组。</p>
+<ul>
+<li>内置的域本地组在 Builtin 组织单元中。</li>
+<li>内置的全局组合通用组在 Users 组织单元中。</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://jiwo.org/editor_upload/20200623/20200623100806_55838.png" alt="img"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://jiwo.org/editor_upload/20200623/20200623100900_72312.png" alt="img"></p>
+<p>6、<strong>几个比较重要的域本地组</strong></p>
+<ul>
+<li><strong>管理员组（Administrators）</strong>：该组的成员可以不受限制地存取计算机&#x2F;域内的资源。它不仅是最具权利的一个组，也是在活动目录和域控制器中默认具有管理员权限的组。该组的成员可以更改 Enterprise Admins、Schema Admins 和 Domain Admins 组的成员关系，是域森林中强大的服务管理组。</li>
+<li><strong>远程登录组（Remote Desktop Users）</strong>：该组的成员具有远程登录权限。</li>
+<li><strong>打印机操作员组（Print Operators）</strong>：该组的成员可以管理网络打印机，包括建立，管理及删除网络打印机，并可以在本地登录和关闭域控制器。</li>
+<li><strong>账号操作员组（Account Operators）</strong>：该组的成员可以创建和管理该域中的用户和组并为其设置权限，也可以在本地登录域控制器。但是，不能更改属于 Administrators 或 Domain Admins 组的账号，也不能更改这些组。在默认情况下，该组中没有成员。</li>
+<li><strong>服务器操作员组（Server Operators）</strong>：该组的成员可以管理域服务器，其权限包括建立、管理、删除任意服务器的共享目录、管理网络打印机、备份任何服务器的文件、格式化服务器硬盘、锁定服务器、变更服务器的系统时间、关闭域控制器等。在默认情况下，该组中没有成员。</li>
+<li><strong>备份操作员组（Backup Operators）</strong>：该组的成员可以在域控制器中执行备份和还原操作，并可以在本地登录和关闭域控制器。在默认情况下，该组中没有成员。</li>
+</ul>
+<p>7、<strong>几个比较重要的全局组、通用组的权限</strong></p>
+<ul>
+<li><strong>域管理员组（Domain Admins）</strong>：该组的成员在所有加入域的服务器、域控制器和活动目录中均默认拥有完整的管理员权限。因为该组会被添加到自己所在域的 Administrators 组中，所以可以继承 Administrators 组的所有权限。同时，该组默认会被添加到每台域成员计算机的本地 Administrators 组中。这样，Domain Admins 组就获得了域中所有计算机的所有权。如果希望某用户成为域系统管理员，建议将该用户添加到 Domain Admins 组中，而不要直接将该用户添加到 Administrators 组中。</li>
+<li><strong>企业系统管理员组（Enterprise Admins）</strong>：该组是域森林根域中的一个组。该组在域森林中的每个域内都是 Administrators 组的成员，因此对所有域控制器都有完全访问权。</li>
+<li><strong>域用户组（Domain Users）</strong>：该组是所有的域成员，在默认情况下，任何由我们建立的用户账号都属于 Domain Users 组，而任何由我们建立的计算机账号都属于 Domain Computers 组。因此，如果想让所有的账号都获得某种资源存取权限，可以将该权限指定给域用户组，或者让域用户组属于具有该权限的组。域用户组默认是内置域 Users 组的成员。</li>
+<li><strong>架构管理员组（Schema Admins）</strong>：该组是域森林根域中的一个组，可以修改活动目录和域森林的模式。该组是为活动目录和域控制器提供完整权限的域用户组，因此，该组成员的资格是非常重要的。</li>
+</ul>
+
+
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E9%85%8D%E7%BD%AE%E7%AF%87-Maven%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96/">配置篇 - Maven 手动下载与导入依赖</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">妙尽璇机</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.8">Stellar 1.26.8</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+<div class="main-mask" onclick="sidebar.toggle()"></div></div></div><div class="scripts">
+<script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.26.8';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.8';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js","memos":"/js/plugins/memos.js","marked":"/js/plugins/marked.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js","transition":"fade"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js","css":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css","selector":null});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied","toast":"复制成功"});
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.26.8" async></script>
+
+<!-- optional -->
+
+
+
+
+
+
+<!-- inject -->
+
+</div></body></html>
