@@ -26,14 +26,14 @@
 <meta property="og:site_name" content="妙尽璇机">
 <meta property="og:description" content="CC4 链在 Commons Collections 版本为 3.2.1 的背景下，可以使用 TransformedMap 或者 LazyMap 来执行 transform 方法，但当 Commons Collections 的版本提升到 4.0 时，就又多出了一种办法：利用 TransformingComparator 来执行 transform 方法。 先前我们将 AnnotationInvo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240530173750752.png">
-<meta property="og:image" content="c:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240603145606511.png">
-<meta property="og:image" content="c:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240603144348816.png">
+<meta property="og:image" content="https://changeyourway.github.io/images/image-20240530173750752.png">
+<meta property="og:image" content="https://changeyourway.github.io/images/image-20240603145606511.png">
+<meta property="og:image" content="https://changeyourway.github.io/images/image-20240603144348816.png">
 <meta property="article:published_time" content="2024-06-05T06:03:01.842Z">
-<meta property="article:modified_time" content="2024-06-05T06:04:04.009Z">
+<meta property="article:modified_time" content="2024-06-05T06:08:12.860Z">
 <meta property="article:author" content="妙尽璇机">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240530173750752.png">
+<meta name="twitter:image" content="https://changeyourway.github.io/images/image-20240530173750752.png">
   
   
   
@@ -90,7 +90,7 @@
     
 <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java-%E5%AE%89%E5%85%A8/">Java 安全</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-06-05T06:03:01.842Z">2024-06-05</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-05T06:04:04.009Z">2024-06-05</time></span></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-06-05T06:03:01.842Z">2024-06-05</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-05T06:08:12.860Z">2024-06-05</time></span></div></div>
 </div>
 
     
@@ -156,7 +156,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    return offer(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>至于这里为什么不直接用反射修改呢，原因是 size 表示的是这个优先队列中元素的个数：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="C:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240530173750752.png" alt="image-20240530173750752"></p>
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240530173750752.png">
+
 <p>如果不往这个优先队列中添加元素，而是直接暴力反射修改 size 的值，那么在序列化时将会报错，导致反序列化无法进行。</p>
 <p>具体可以看 PriorityQueue 的 writeObject 方法：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private void writeObject(java.io.ObjectOutputStream s)</span><br><span class="line">    throws java.io.IOException &#123;</span><br><span class="line">    // Write out element count, and any hidden stuff</span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">    // Write out array length, for compatibility with 1.5 version</span><br><span class="line">    s.writeInt(Math.max(2, size + 1));</span><br><span class="line"></span><br><span class="line">    // Write out all elements in the &quot;proper order&quot;.</span><br><span class="line">    for (int i = 0; i &lt; size; i++)</span><br><span class="line">        s.writeObject(queue[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -267,13 +268,15 @@
 
 <p>这个属性被 transient 修饰，不能参加序列化，也就是说反序列化通过 Hashtable 的 readObject 方法第一次调用 reconstitutionPut 方法时，table 至少是没有值的。</p>
 <p>再放一遍 reconstitutionPut 代码：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="C:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240603145606511.png" alt="image-20240603145606511"></p>
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240603145606511.png">
+
 <p>回到前面的问题，第一次调用 reconstitutionPut 方法时 table 为空，故而 for 循环中取到的 e 为空，直接跳出 for 循环，进行后面的赋值：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Entry&lt;K,V&gt; e = (Entry&lt;K,V&gt;)tab[index];</span><br><span class="line">tab[index] = new Entry&lt;&gt;(hash, key, value, e);</span><br></pre></td></tr></table></figure>
 
 <p>这里调用了 Entry 的构造方法，会将其成员属性 hash 赋值为前面调用 key.hashCode() 算出来的 hash 值。</p>
 <p>Entry 是 Hashtable 中的一个静态内部类，其构造方法如下：</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="C:\Users\miaoj\AppData\Roaming\Typora\typora-user-images\image-20240603144348816.png" alt="image-20240603144348816"></p>
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240603144348816.png">
+
 <p>第一次 reconstitutionPut 方法被调用完后，会回到 readObject 方法的循环中，Hashtable 中的键值对有多少个，这个 for 循环就执行多少次，reconstitutionPut 方法就被调用多少次，那么如果在 Hashtable 中放入两个 LazyMap 对象：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hashtable.put(lazyMap1, &quot;test&quot;);</span><br><span class="line">hashtable.put(lazyMap2, &quot;test&quot;);</span><br></pre></td></tr></table></figure>
 
