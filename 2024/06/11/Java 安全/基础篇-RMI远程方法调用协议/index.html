@@ -16,24 +16,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>配置篇 - Maven 手动下载与导入依赖 - 妙尽璇机</title>
+  <title>基础篇 - RMI 协议 - 妙尽璇机</title>
 
   
-    <meta name="description" content="遇到 maven 无法自动导入的依赖怎么办，本文介绍了如何手动下载与导入 maven 依赖">
+    <meta name="description" content="RMI（Remote Method Invocation，远程方法调用）是 Java 编程语言中用于实现分布式计算的一种技术。RMI 允许一个 JVM上的对象调用另一台 JVM 上的对象的方法，就像调用本地对象的方法一样，从而实现跨网络的远程调用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置篇 - Maven 手动下载与导入依赖">
-<meta property="og:url" content="https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E9%85%8D%E7%BD%AE%E7%AF%87-Maven%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96/index.html">
+<meta property="og:title" content="基础篇 - RMI 协议">
+<meta property="og:url" content="https://changeyourway.github.io/2024/06/11/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-RMI%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="妙尽璇机">
-<meta property="og:description" content="遇到 maven 无法自动导入的依赖怎么办，本文介绍了如何手动下载与导入 maven 依赖">
+<meta property="og:description" content="RMI（Remote Method Invocation，远程方法调用）是 Java 编程语言中用于实现分布式计算的一种技术。RMI 允许一个 JVM上的对象调用另一台 JVM 上的对象的方法，就像调用本地对象的方法一样，从而实现跨网络的远程调用。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20240428112425221.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20240428112831198.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20240428113523947.png">
-<meta property="article:published_time" content="2024-05-10T11:53:40.081Z">
-<meta property="article:modified_time" content="2024-05-10T12:32:53.757Z">
+<meta property="og:image" content="https://changeyourway.github.io/images/image-20240611090617906.png">
+<meta property="article:published_time" content="2024-06-11T01:47:46.220Z">
+<meta property="article:modified_time" content="2024-06-11T01:49:22.589Z">
 <meta property="article:author" content="妙尽璇机">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changeyourway.github.io/images/image-20240428112425221.png">
+<meta name="twitter:image" content="https://changeyourway.github.io/images/image-20240611090617906.png">
   
   
   
@@ -68,7 +66,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%81%87%E5%88%B0-maven-%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E7%9A%84%E4%BE%9D%E8%B5%96%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="toc-text">遇到 maven 无法自动导入的依赖怎么办</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RMI-%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D"><span class="toc-text">RMI 协议介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RMI-%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B"><span class="toc-text">RMI 入门案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RMI-%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90"><span class="toc-text">RMI 原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></div></div></widget>
 
 
 
@@ -76,7 +74,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Rome%E9%93%BE%E4%B9%8BHotSwappableTargetSource%E9%93%BE/"><span class="title">漏洞篇 - Rome 链之 HotSwappableTargetSource 利用链</span></a><a class="item title" href="/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-Java%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%8F%8D%E5%B0%84/"><span class="title">基础篇 - Java 的类加载与反射</span></a><a class="item title" href="/2024/06/11/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-RMI%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%8D%8F%E8%AE%AE/"><span class="title">基础篇 - RMI 协议</span></a><a class="item title" href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Rome%E5%88%A9%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 Rome 链</span></a><a class="item title" href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-javassist%E7%94%A8%E6%B3%95%E6%8C%87%E5%8D%97/"><span class="title">基础篇 - Javassist 使用指南</span></a><a class="item title" href="/2024/05/27/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC3%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 CC3 链</span></a><a class="item title" href="/2024/06/05/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC4+CC2+CC5+CC7%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 CC4+CC2+CC5+CC7 链</span></a><a class="item title" href="/2024/05/13/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC6%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 CC6 链</span></a><a class="item title" href="/2024/05/16/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F03-%E9%9A%A7%E9%81%93%E9%80%9A%E4%BF%A1/"><span class="title">内网渗透 03 - 隧道通信</span></a><a class="item title" href="/2024/05/16/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F02-%E5%86%85%E7%BD%91%E6%89%AB%E6%8F%8F/"><span class="title">内网渗透 02 - 端口扫描</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Rome%E9%93%BE%E4%B9%8BHotSwappableTargetSource%E9%93%BE/"><span class="title">漏洞篇 - Rome 链之 HotSwappableTargetSource 利用链</span></a><a class="item title" href="/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-Java%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E4%B8%8E%E5%8F%8D%E5%B0%84/"><span class="title">基础篇 - Java 的类加载与反射</span></a><a class="item title active" href="/2024/06/11/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-RMI%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%8D%8F%E8%AE%AE/"><span class="title">基础篇 - RMI 协议</span><svg class="active-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M21 11.098v4.993c0 3.096 0 4.645-.734 5.321c-.35.323-.792.526-1.263.58c-.987.113-2.14-.907-4.445-2.946c-1.02-.901-1.529-1.352-2.118-1.47a2.225 2.225 0 0 0-.88 0c-.59.118-1.099.569-2.118 1.47c-2.305 2.039-3.458 3.059-4.445 2.945a2.238 2.238 0 0 1-1.263-.579C3 20.736 3 19.188 3 16.091v-4.994C3 6.81 3 4.666 4.318 3.333C5.636 2 7.758 2 12 2c4.243 0 6.364 0 7.682 1.332C21 4.665 21 6.81 21 11.098" opacity=".5"/><path fill="currentColor" d="M9 5.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5z"/></svg></a><a class="item title" href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Rome%E5%88%A9%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 Rome 链</span></a><a class="item title" href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-javassist%E7%94%A8%E6%B3%95%E6%8C%87%E5%8D%97/"><span class="title">基础篇 - Javassist 使用指南</span></a><a class="item title" href="/2024/05/27/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC3%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 CC3 链</span></a><a class="item title" href="/2024/06/05/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC4+CC2+CC5+CC7%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 CC4+CC2+CC5+CC7 链</span></a><a class="item title" href="/2024/05/13/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC6%E9%93%BE%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - Java 反序列化之 CC6 链</span></a><a class="item title" href="/2024/05/16/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F03-%E9%9A%A7%E9%81%93%E9%80%9A%E4%BF%A1/"><span class="title">内网渗透 03 - 隧道通信</span></a><a class="item title" href="/2024/05/16/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F02-%E5%86%85%E7%BD%91%E6%89%AB%E6%8F%8F/"><span class="title">内网渗透 02 - 端口扫描</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -90,48 +88,54 @@
     
 <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java-%E5%AE%89%E5%85%A8/">Java 安全</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-05-10T11:53:40.081Z">2024-05-10</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-05-10T12:32:53.757Z">2024-05-10</time></span></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-06-11T01:47:46.220Z">2024-06-11</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-06-11T01:49:22.589Z">2024-06-11</time></span></div></div>
 </div>
 
     
     <div class="bottom">
       <div class="text-area">
-        <h1 class="text title"><span>配置篇 - Maven 手动下载与导入依赖</span></h1>
+        <h1 class="text title"><span>基础篇 - RMI 协议</span></h1>
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><p>遇到 maven 无法自动导入的依赖怎么办，本文介绍了如何手动下载与导入 maven 依赖</p>
+  </div><article class="md-text content"><p>RMI（Remote Method Invocation，远程方法调用）是 Java 编程语言中用于实现分布式计算的一种技术。RMI 允许一个 JVM上的对象调用另一台 JVM 上的对象的方法，就像调用本地对象的方法一样，从而实现跨网络的远程调用。</p>
 <span id="more"></span>
 
-<h5 id="遇到-maven-无法自动导入的依赖怎么办"><a href="#遇到-maven-无法自动导入的依赖怎么办" class="headerlink" title="遇到 maven 无法自动导入的依赖怎么办"></a>遇到 maven 无法自动导入的依赖怎么办</h5><p>推荐博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44455388/article/details/100926697">maven 项目手动导入 jar 包依赖</a></p>
-<h6 id="第一步，在网上下载依赖-jar-包"><a href="#第一步，在网上下载依赖-jar-包" class="headerlink" title="第一步，在网上下载依赖 jar 包"></a>第一步，在网上下载依赖 jar 包</h6><p>比较推荐 nowjava （时代java）这个网站。</p>
-<p>比如我要下载 javax.el-api-3.0.0.jar ，那么访问网址 <a target="_blank" rel="noopener" href="https://nowjava.com/jar/detail/m03040939/javax.el-api-3.0.0.jar.html">https://nowjava.com/jar/detail/m03040939/javax.el-api-3.0.0.jar.html</a> 即可，往下翻，有下载 jar 包的链接：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240428112425221.png">
+<h2 id="RMI-协议介绍"><a href="#RMI-协议介绍" class="headerlink" title="RMI 协议介绍"></a>RMI 协议介绍</h2><p>RMI（Remote Method Invocation，远程方法调用）是 Java 编程语言中用于实现分布式计算的一种技术。RMI 允许一个 JVM上的对象调用另一台 JVM 上的对象的方法，就像调用本地对象的方法一样，从而实现跨网络的远程调用。</p>
+<h2 id="RMI-入门案例"><a href="#RMI-入门案例" class="headerlink" title="RMI 入门案例"></a>RMI 入门案例</h2><p>先来实现一个最简单的 RMI ：服务器会提供一个 sayHello 服务，这个服务有一个方法名为 function ，它的功能是将输入的字符串返回。</p>
+<p>首先我们需要一个接口，这个接口将会被服务器和客户端共享，Java 的 RMI 规定此接口必须派生自 java.rmi.Remote ，并在每个方法声明抛出 RemoteException ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import java.rmi.Remote;</span><br><span class="line">import java.rmi.RemoteException;</span><br><span class="line"></span><br><span class="line">public interface SayHelloInterface extends Remote &#123;</span><br><span class="line">    String function(String input) throws RemoteException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>下载好之后复制文件路径：”C:\Users\miaoj\Downloads\javax.el-api-3.0.0.jar” 。</p>
-<h6 id="第二步，idea-中导入-jar-包"><a href="#第二步，idea-中导入-jar-包" class="headerlink" title="第二步，idea 中导入 jar 包"></a>第二步，idea 中导入 jar 包</h6><p>file &#x3D;&gt; project Structure &#x3D;&gt; modules &#x3D;&gt; Dependencies &#x3D;&gt; 点击加号 &#x3D;&gt; 选择第一项 JARs or Directories</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240428112831198.png">
+<p>服务器需要编写一个接口的实现类，这个实现类需要实现方法功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import java.rmi.RemoteException;</span><br><span class="line"></span><br><span class="line">public class SayHelloImpl implements SayHelloInterface&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public String function(String input) throws RemoteException &#123;</span><br><span class="line">        return input;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>将文件地址粘贴进去，确定即可。</p>
-<h6 id="第三步，将-jar-包手动添加到-maven-本地仓库中"><a href="#第三步，将-jar-包手动添加到-maven-本地仓库中" class="headerlink" title="第三步，将 jar 包手动添加到 maven 本地仓库中"></a>第三步，将 jar 包手动添加到 maven 本地仓库中</h6><p>打开 idea 的 Terminal 终端进入 Windows 命令提示符，输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install:install-file -Dfile=&quot;C:\Users\miaoj\Downloads\javax.el-api-3.0.0.jar&quot; -DgroupId=javax.el -DartifactId=javax.el-api -Dversion=3.0.0 -Dpackaging=jar</span><br></pre></td></tr></table></figure>
+<p>最后，服务端注册这个 RMI 服务，使其开放在公网上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import java.rmi.RemoteException;</span><br><span class="line">import java.rmi.registry.LocateRegistry;</span><br><span class="line">import java.rmi.registry.Registry;</span><br><span class="line">import java.rmi.server.UnicastRemoteObject;</span><br><span class="line"></span><br><span class="line">public class Server &#123;</span><br><span class="line">    public static void main(String[] args) throws RemoteException &#123;</span><br><span class="line">        // 将 SayHello 服务转换为 RMI 远程服务接口</span><br><span class="line">        SayHelloInterface skeleton = (SayHelloInterface) UnicastRemoteObject.exportObject(new SayHelloImpl(), 0);</span><br><span class="line">        // 将 RMI 服务注册到 1099 端口</span><br><span class="line">        Registry registry = LocateRegistry.createRegistry(1099);</span><br><span class="line">        // 注册 SayHello 服务，服务名为 &quot;SayHello&quot;</span><br><span class="line">        registry.rebind(&quot;SayHello&quot;, skeleton);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>-DgroupId：pom 文件中的 groupId </p>
-<p>-DartifactId：pom 文件中的 artifactId </p>
-<p>-Dversion：pom 文件中的 version </p>
-<p>-Dpackaging：导入包的类型，这里是 jar 类型</p>
-<p>-Dfile：jar 包所在路径</p>
-<p>在执行结果中可以看到 jar 包已被导入 maven 本地仓库：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240428113523947.png">
+<p>服务端代码至此就完成了。</p>
+<p>接下来是客户端，要想实现远程调用，服务端和客户端需要共享一个接口，所以客户端要将服务端的 SayHelloInterface.java 从服务端复制过来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import java.rmi.Remote;</span><br><span class="line">import java.rmi.RemoteException;</span><br><span class="line"></span><br><span class="line">public interface SayHelloInterface extends Remote &#123;</span><br><span class="line">    String function(String input) throws RemoteException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>完成之后，查看 pom.xml 文件可以发现原来的依赖不再爆红：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;javax.el&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;javax.el-api&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;3.0.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>最后在客户端实现 RMI 调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import java.rmi.NotBoundException;</span><br><span class="line">import java.rmi.RemoteException;</span><br><span class="line">import java.rmi.registry.LocateRegistry;</span><br><span class="line">import java.rmi.registry.Registry;</span><br><span class="line"></span><br><span class="line">public class RMIClientTest &#123;</span><br><span class="line">    public static void main(String[] args) throws RemoteException, NotBoundException &#123;</span><br><span class="line">        // 连接到服务器 localhost ，端口 1099 :</span><br><span class="line">        Registry registry = LocateRegistry.getRegistry(&quot;localhost&quot;, 1099);</span><br><span class="line">        // 查找名称为 &quot;SayHello&quot; 的服务并强制转型为 SayHelloInterface 类型:</span><br><span class="line">        SayHelloInterface sayHello = (SayHelloInterface) registry.lookup(&quot;SayHello&quot;);</span><br><span class="line">        // 正常调用接口方法:</span><br><span class="line">        String output = sayHello.function(&quot;Hello, RMI&quot;);</span><br><span class="line">        // 打印输出结果</span><br><span class="line">        System.out.println(output);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>先运行服务器，再运行客户端。运行结果是在客户端控制台上输出：” Hello, RMI “ 。</p>
+<p>因为客户端只有接口，并没有实现类，因此，客户端获得的接口方法返回值实际上是通过网络从服务器端获取的。因为 RMI 服务的默认端口是 1099 ，所以上面的实验也使用 1099 端口。</p>
+<p>Java 的 RMI 严重依赖序列化和反序列化，而这种情况下可能会造成严重的安全漏洞，因为 Java 的序列化和反序列化不但涉及到数据，还涉及到二进制的字节码，即使使用白名单机制也很难保证 100% 排除恶意构造的字节码。因此，使用 RMI 时，双方必须是内网互相信任的机器，不要把 1099 端口暴露在公网上作为对外服务。</p>
+<p>此外，Java 的 RMI 调用机制决定了双方必须是 Java 程序，其他语言很难调用 Java 的 RMI 。如果要使用不同语言进行 RPC 调用，可以选择更通用的协议，例如 <a target="_blank" rel="noopener" href="https://grpc.io/">gRPC</a> 。</p>
+<h2 id="RMI-原理解析"><a href="#RMI-原理解析" class="headerlink" title="RMI 原理解析"></a>RMI 原理解析</h2><p>RMI 交互图（来自网图）：</p>
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20240611090617906.png">
+
+
+
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a target="_blank" rel="noopener" href="https://javasec.org/javase/RMI/">RMI</a> </p>
+<p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1252599548343744/1323711850348577">RMI 远程调用</a> </p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Shadow_Light/article/details/105587008">RMI 原理浅析以及调用流程</a></p>
 
 
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/05/11/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-Java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">基础篇 - Java 动态代理</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-URLDNS%E5%88%A9%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/">漏洞篇 - URLDNS 利用链分析</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Rome%E5%88%A9%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/">漏洞篇 - Java 反序列化之 Rome 链</a></div></section></div>
 
 
 
