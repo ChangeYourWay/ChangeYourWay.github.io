@@ -68,7 +68,7 @@
 <meta property="og:image" content="https://changeyourway.github.io/images/image-20240926132057153.png">
 <meta property="og:image" content="https://changeyourway.github.io/images/image-20240926140011667.png">
 <meta property="article:published_time" content="2024-09-26T07:31:11.138Z">
-<meta property="article:modified_time" content="2024-09-26T10:51:52.536Z">
+<meta property="article:modified_time" content="2024-09-26T10:52:32.365Z">
 <meta property="article:author" content="妙尽璇机">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://changeyourway.github.io/images/image-20240920104950670.png">
@@ -130,7 +130,7 @@
     
 <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java-%E5%AE%89%E5%85%A8/">Java 安全</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-26T07:31:11.138Z">2024-09-26</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-26T10:51:52.536Z">2024-09-26</time></span></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-26T07:31:11.138Z">2024-09-26</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-09-26T10:52:32.365Z">2024-09-26</time></span></div></div>
 </div>
 
     
@@ -300,7 +300,7 @@
 <p>所以<strong>第一次访问只是设置属性，第二次访问才是注入，注入点在重新构建 filterChain 这里</strong>。</p>
 <h2 id="Tomcat-Listener-内存马"><a href="#Tomcat-Listener-内存马" class="headerlink" title="Tomcat Listener 内存马"></a>Tomcat Listener 内存马</h2><p>那么根据前面的思路，我们也是想在服务器中动态注册一个自定义的 Listener ，如何做呢？</p>
 <p>JavaWeb 提供了8个监听器：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="images/image-20210823230820586.png" alt="image-20210823230820586" style="zoom:80%;" >
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="images/image-20210823230820586.png">
 
 <p>ServletRequestListener 是最适合用来作为内存马的。访问任意资源时都会触发 ServletRequest 的创建和销毁，在客户端每次发起请求时，容器会（例如 Tomcat）创建 ServletRequest 对象，并在请求完成后销毁它，而 ServletRequest 创建和销毁的动作就会触发 ServletRequestListener 监听器，触发 ServletRequestListener#requestInitialized() 方法。</p>
 <h3 id="源码调试-1"><a href="#源码调试-1" class="headerlink" title="源码调试"></a>源码调试</h3><p>同理我们来看一下 Listener 是如何被创建的，下面是一个简单的自定义 Listener ：</p>
