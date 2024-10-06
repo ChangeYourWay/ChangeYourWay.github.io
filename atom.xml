@@ -458,7 +458,7 @@
     <link href="https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-URLDNS%E5%88%A9%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/"/>
     <id>https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-URLDNS%E5%88%A9%E7%94%A8%E9%93%BE%E5%88%86%E6%9E%90/</id>
     <published>2024-05-10T11:53:40.080Z</published>
-    <updated>2024-05-10T12:31:43.369Z</updated>
+    <updated>2024-10-06T06:57:34.845Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文详尽地讲述了 URLDNS 反序列化利用链的原理&lt;/p&gt;</summary>
@@ -475,7 +475,7 @@
     <link href="https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC1%E9%93%BE%E5%88%86%E6%9E%90/"/>
     <id>https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC1%E9%93%BE%E5%88%86%E6%9E%90/</id>
     <published>2024-05-10T11:53:40.079Z</published>
-    <updated>2024-05-10T13:51:37.121Z</updated>
+    <updated>2024-10-06T06:31:00.654Z</updated>
     
     
     <summary type="html">&lt;p&gt;Apache Commons Collections 是对 java.util.Collection 的扩展，对常用的集合操作进行了很好的封装、抽象和补充，在保证性能的同时大大简化代码。CC 链正是在 Commons Collections 包中的反序列化利用链，本次介绍的是 CC1 链。&lt;/p&gt;</summary>
