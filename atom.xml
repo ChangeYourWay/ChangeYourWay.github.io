@@ -390,7 +390,7 @@
     <link href="https://changeyourway.github.io/2024/05/12/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC1%E9%93%BEysoserial%E7%89%88/"/>
     <id>https://changeyourway.github.io/2024/05/12/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-CC1%E9%93%BEysoserial%E7%89%88/</id>
     <published>2024-05-12T10:20:51.663Z</published>
-    <updated>2024-05-14T00:48:10.674Z</updated>
+    <updated>2024-10-06T07:15:20.717Z</updated>
     
     
     <summary type="html">&lt;p&gt;在前面学习 CC1 链时，我们使用 TransformedMap 作为利用链，但其实除了 TransformedMap 之外，还有 DefaultedMap 和 LazyMap  也可以作为利用链，它们都在 org.apache.commons.collections.map 包下。这一节我们来分析 ysoserial 工具中利用的 CC1 链，它是将 LazyMap 作为利用链的。&lt;/p&gt;</summary>
@@ -424,7 +424,7 @@
     <link href="https://changeyourway.github.io/2024/05/11/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-Java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
     <id>https://changeyourway.github.io/2024/05/11/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-Java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</id>
     <published>2024-05-11T11:41:10.919Z</published>
-    <updated>2024-05-11T11:48:48.117Z</updated>
+    <updated>2024-10-06T07:04:40.522Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 Java 动态代理中，代理对象能够通过调用 invoke 方法来增强被代理对象的原始方法。&lt;/p&gt;</summary>
@@ -441,7 +441,7 @@
     <link href="https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E9%85%8D%E7%BD%AE%E7%AF%87-Maven%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96/"/>
     <id>https://changeyourway.github.io/2024/05/10/Java%20%E5%AE%89%E5%85%A8/%E9%85%8D%E7%BD%AE%E7%AF%87-Maven%E6%89%8B%E5%8A%A8%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96/</id>
     <published>2024-05-10T11:53:40.081Z</published>
-    <updated>2024-05-10T12:32:53.757Z</updated>
+    <updated>2024-10-06T07:03:35.211Z</updated>
     
     
     <summary type="html">&lt;p&gt;遇到 maven 无法自动导入的依赖怎么办，本文介绍了如何手动下载与导入 maven 依赖&lt;/p&gt;</summary>
