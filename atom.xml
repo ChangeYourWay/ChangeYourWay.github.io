@@ -6,7 +6,7 @@
   <link href="https://changeyourway.github.io/atom.xml" rel="self"/>
   
   <link href="https://changeyourway.github.io/"/>
-  <updated>2025-08-23T08:24:39.644Z</updated>
+  <updated>2026-03-07T08:14:18.871Z</updated>
   <id>https://changeyourway.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>漏洞篇 - Hessian Aspectj 二次反序列化新链</title>
+    <link href="https://changeyourway.github.io/2026/03/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87%20-%20Hessian%20Aspectj%20%E4%BA%8C%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%96%B0%E9%93%BE/"/>
+    <id>https://changeyourway.github.io/2026/03/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87%20-%20Hessian%20Aspectj%20%E4%BA%8C%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%96%B0%E9%93%BE/</id>
+    <published>2026-03-07T08:13:03.991Z</published>
+    <updated>2026-03-07T08:14:18.871Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;起因是我在用自制的 codeql mcp 工具测试 2026 alictf Fury 反序列化时，发现了一条新的二次反序列化链，可惜等构造完了才发现这个链子上的类没有实现 serializable ，本以为要难产了，jsjcw 师傅提醒说可以用在 hessian 上，因为是 toString 触发的，一语点醒梦中人，测试了确实可以，故而分享一下这条生来残缺的链子。&lt;/p&gt;
+&lt;h2 id=&quot;利用链总结&quot;&gt;&lt;a href=&quot;#利用链总结&quot; class=&quot;headerlink&quot; title=&quot;利用链总结&quot;&gt;&lt;/a&gt;利用链总结&lt;/h2&gt;&lt;p&gt;这条链从 toString 到 readObject 全都是 Aspectj 依赖中的类：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l</summary>
+      
+    
+    
+    
+    <category term="Java 安全" scheme="https://changeyourway.github.io/categories/Java-%E5%AE%89%E5%85%A8/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>漏洞篇 - Fastjson 1.2.68 - 1.2.80 利用</title>
@@ -69,8 +91,8 @@
   
   <entry>
     <title>2025 D^3CTF Web WP</title>
-    <link href="https://changeyourway.github.io/2025/06/02/CTF/2025%20D^3CTF%20Web%20WP/"/>
-    <id>https://changeyourway.github.io/2025/06/02/CTF/2025%20D^3CTF%20Web%20WP/</id>
+    <link href="https://changeyourway.github.io/2025/06/02/CTF/2025%20D%5E3CTF%20Web%20WP/"/>
+    <id>https://changeyourway.github.io/2025/06/02/CTF/2025%20D%5E3CTF%20Web%20WP/</id>
     <published>2025-06-02T13:02:53.619Z</published>
     <updated>2025-06-02T13:11:26.470Z</updated>
     

@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.8" theme-name="Stellar" theme-version="1.26.8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
   
   <meta name="generator" content="Hexo 7.1.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -12,83 +13,26 @@
   <meta name="force-rendering" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="HandheldFriendly" content="True" >
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="theme-color" content="#f8f8f8">
-  
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
   <title>RASP 研究，OpenRasp 原理与绕过 - 妙尽璇机</title>
 
   
     <meta name="description" content="RASP 快速入门RASP 生成前置知识：基础篇 - Java Agent 详解 仿照搭建 Java Agent 示例环境的过程，只需要将 Hook 的类改变为关键漏洞触发的类，即可实现一个简单的 RASP 。 Java 不允许在默认包中定义代理类。因此，建议为您的代理类添加包声明。 下面是我的简单 rasp 代码示例： Agent： 实现了 premain 和 agentmain 两种方法，覆盖">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RASP 研究，OpenRasp 原理与绕过">
-<meta property="og:url" content="https://changeyourway.github.io/2025/07/12/Java%20%E5%AE%89%E5%85%A8/RASP%20%E7%A0%94%E7%A9%B6%EF%BC%8COpenRasp%20%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%95%E8%BF%87/index.html">
+<meta property="og:url" content="https://changeyourway.github.io/2025/07/12/Java%20%E5%AE%89%E5%85%A8/RASP%20%E7%A0%94%E7%A9%B6%EF%BC%8COpenRasp%20%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%95%E8%BF%87/">
 <meta property="og:site_name" content="妙尽璇机">
 <meta property="og:description" content="RASP 快速入门RASP 生成前置知识：基础篇 - Java Agent 详解 仿照搭建 Java Agent 示例环境的过程，只需要将 Hook 的类改变为关键漏洞触发的类，即可实现一个简单的 RASP 。 Java 不允许在默认包中定义代理类。因此，建议为您的代理类添加包声明。 下面是我的简单 rasp 代码示例： Agent： 实现了 premain 和 agentmain 两种方法，覆盖">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250708173927-vijkl2m.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250708174103-gcdx7p9.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250708214650-ot71y0v.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/network-asset-image-20241023173202010-20250708212736-vteva4q.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250708215448-jareduh.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709091431-j6qdst5.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709100810-zd23eu3.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709102130-jg9i5mo.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709102210-2fv05bd.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709102328-efdiuv9.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709102649-mhtlsj7.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709111105-rjda278.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709111232-rlygg9x.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709112311-khq4hyn.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709112558-avkcb9e.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709112707-8lmjv8v.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709121135-q9kcwf5.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709114704-qr8nyf8.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709121349-ady6xt9.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709150930-bttpzmu.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709151737-iq02tkz.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709153135-zawarx9.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709155241-k9ppvrn.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709155254-gccragt.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709155531-m383cbb.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709163339-m6u766d.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709163358-vp3m416.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709163554-p9al8c8.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709165214-aarmewh.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709173908-ud20gcw.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709174004-uhsiqmt.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709174100-dcaj58j.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709174137-zsq51zo.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709174202-arbm28h.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709174303-raloso8.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709175031-x1eh1w2.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709175217-rvr7k8d.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710093650-khf1wyt.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710093751-tf6f2g4.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710094003-irdmo59.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710094623-dc0bith.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710095809-hj7fypz.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710100422-z16ap8d.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710112358-323odjb.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709221558-j7jk22r.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250709221611-grdf5ed.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710122345-jgmm2g2.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710124956-ijn0vs1.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711211838-un5z6uo.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711223818-v0qh2bo.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710092617-n3e9hfs.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250710092805-n0sec5z.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711231228-k38vhtx.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711231432-emg9fru.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711232333-2vbeczb.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711233005-xl9mfo9.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711234602-rqrtiqr.png">
-<meta property="og:image" content="https://changeyourway.github.io/images/image-20250711233738-5fgbhuk.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg">
 <meta property="article:published_time" content="2025-07-11T16:26:03.757Z">
 <meta property="article:modified_time" content="2025-07-12T01:19:17.118Z">
 <meta property="article:author" content="妙尽璇机">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changeyourway.github.io/images/image-20250708173927-vijkl2m.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg">
   
   
   
@@ -99,7 +43,8 @@
     <link rel="alternate" href="/atom.xml" title="妙尽璇机" type="application/atom+xml">
   
 
-  <link rel="stylesheet" href="/css/main.css?v=1.26.8">
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
 
   
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
@@ -107,33 +52,30 @@
 
   
 
-  
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"妙尽璇机","sameAs":[],"image":"https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg"},"dateCreated":"2025-07-12T00:26:03+08:00","dateModified":"2025-07-12T09:19:17+08:00","datePublished":"2025-07-12T00:26:03+08:00","description":"","headline":"RASP 研究，OpenRasp 原理与绕过","mainEntityOfPage":{"@type":"WebPage","@id":"https://changeyourway.github.io/2025/07/12/Java%20%E5%AE%89%E5%85%A8/RASP%20%E7%A0%94%E7%A9%B6%EF%BC%8COpenRasp%20%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%95%E8%BF%87/"},"publisher":{"@type":"Organization","name":"妙尽璇机","sameAs":[],"image":"https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg","logo":{"@type":"ImageObject","url":"https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg"}},"url":"https://changeyourway.github.io/2025/07/12/Java%20%E5%AE%89%E5%85%A8/RASP%20%E7%A0%94%E7%A9%B6%EF%BC%8COpenRasp%20%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BB%95%E8%BF%87/","image":[]}</script>
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/xaoxuu/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/xaoxuu/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/xaoxuu/favicon/favicon-16x16.png"><link rel="manifest" href="/assets/xaoxuu/favicon/site.webmanifest"><link rel="shortcut icon" href="/assets/xaoxuu/favicon/favicon.ico"><meta name="theme-color" content="#f8f8f8"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" />
 </head>
 <body>
 
-<div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
-<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">妙尽璇机</div><div class="sub cap">真理所致，吾心所向</div></a></div></header>
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://raw.githubusercontent.com/ChangeYourWay/changeyourway.github.io/refs/heads/main/assets/20210722092640_f61bd.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">妙尽璇机</div><div class="sub cap">真理所致，吾心所向</div></a></div></header>
 
 <div class="nav-area">
-<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
-
 
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="专栏" href="/topic/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/explore/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
 </div>
 <div class="widgets">
-
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RASP-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">RASP 快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RASP-%E7%94%9F%E6%88%90"><span class="toc-text">RASP 生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RASP-%E4%BD%BF%E7%94%A8"><span class="toc-text">RASP 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%9C%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E9%80%9A%E8%BF%87-javaagent%E2%80%8B-%E5%8F%82%E6%95%B0%E5%8A%A0%E8%BD%BD"><span class="toc-text">方法一：在启动时通过 -javaagent​ 参数加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%8A%A8%E6%80%81%E9%99%84%E5%8A%A0-Agent%EF%BC%88%E6%97%A0%E9%9C%80%E9%87%8D%E5%90%AF-JVM%EF%BC%89"><span class="toc-text">方法二：动态附加 Agent（无需重启 JVM）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenRasp"><span class="toc-text">OpenRasp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rasp"><span class="toc-text">rasp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rasp-engine"><span class="toc-text">rasp-engine</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer-%E9%85%8D%E7%BD%AE"><span class="toc-text">Transformer 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JNDI-Hook"><span class="toc-text">JNDI Hook</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#V8AttackChecker"><span class="toc-text">V8AttackChecker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js-%E6%8F%92%E4%BB%B6%E6%B3%A8%E5%86%8C"><span class="toc-text">js 插件注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RASP-%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-text">RASP 黑名单</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenRasp-%E7%BB%95%E8%BF%87"><span class="toc-text">OpenRasp 绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%BB%91%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87"><span class="toc-text">1、黑名单绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87"><span class="toc-text">2、正则绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E7%BB%95%E8%BF%87"><span class="toc-text">3、业务逻辑绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6"><span class="toc-text">4、覆盖文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></div></div></widget>
-
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
 
 
 
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span><a class="cap-action" id="rss" title="Subscribe" href="/atom.xml"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19q0-.825.588-1.412T5 17q.825 0 1.413.588T7 19q0 .825-.587 1.413T5 21m13.5 0q-.65 0-1.088-.475T16.9 19.4q-.275-2.425-1.312-4.537T12.9 11.1q-1.65-1.65-3.762-2.687T4.6 7.1q-.65-.075-1.125-.512T3 5.5q0-.65.45-1.062t1.075-.363q3.075.275 5.763 1.563t4.737 3.337q2.05 2.05 3.338 4.738t1.562 5.762q.05.625-.363 1.075T18.5 21m-6 0q-.625 0-1.075-.437T10.85 19.5q-.225-1.225-.787-2.262T8.65 15.35q-.85-.85-1.888-1.412T4.5 13.15q-.625-.125-1.062-.575T3 11.5q0-.65.45-1.075t1.075-.325q1.825.25 3.413 1.063t2.837 2.062q1.25 1.25 2.063 2.838t1.062 3.412q.1.625-.325 1.075T12.5 21"/></svg></a></div><div class="widget-body fs14"><a class="item title" href="/2025/08/23/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Fastjson%201.2.68-1.2.80%20%E5%88%A9%E7%94%A8/"><span class="title">漏洞篇 - Fastjson 1.2.68 - 1.2.80 利用</span></a><a class="item title" href="/2024/09/06/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-JNDI%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/"><span class="title">漏洞篇 - JNDI 注入详解</span></a><a class="item title" href="/2024/08/28/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-ysoserial%E7%9A%84JRMP%E6%A8%A1%E5%9D%97%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - ysoserial 的 JRMP 模块分析</span></a><a class="item title" href="/2024/08/28/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-RMI%E7%9B%B8%E5%85%B3%E7%9A%84%E6%94%BB%E5%87%BB/"><span class="title">漏洞篇 - RMI 相关的攻击</span></a><a class="item title" href="/2024/07/08/Java%20%E5%AE%89%E5%85%A8/%E5%9F%BA%E7%A1%80%E7%AF%87-RMI%E8%BF%9C%E7%A8%8B%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E5%8D%8F%E8%AE%AE/"><span class="title">基础篇 - RMI 协议详解</span></a></div></widget>
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span><a class="cap-action" id="rss" title="Subscribe" href="/atom.xml"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19q0-.825.588-1.412T5 17q.825 0 1.413.588T7 19q0 .825-.587 1.413T5 21m13.5 0q-.65 0-1.088-.475T16.9 19.4q-.275-2.425-1.312-4.537T12.9 11.1q-1.65-1.65-3.762-2.687T4.6 7.1q-.65-.075-1.125-.512T3 5.5q0-.65.45-1.062t1.075-.363q3.075.275 5.763 1.563t4.737 3.337q2.05 2.05 3.338 4.738t1.562 5.762q.05.625-.363 1.075T18.5 21m-6 0q-.625 0-1.075-.437T10.85 19.5q-.225-1.225-.787-2.262T8.65 15.35q-.85-.85-1.888-1.412T4.5 13.15q-.625-.125-1.062-.575T3 11.5q0-.65.45-1.075t1.075-.325q1.825.25 3.413 1.063t2.837 2.062q1.25 1.25 2.063 2.838t1.062 3.412q.1.625-.325 1.075T12.5 21"/></svg></a></div><div class="widget-body fs14"><a class="item title" href="/2026/03/07/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87%20-%20Hessian%20Aspectj%20%E4%BA%8C%E6%AC%A1%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%96%B0%E9%93%BE/"><span class="title">漏洞篇 - Hessian Aspectj 二次反序列化新链</span></a><a class="item title" href="/2025/08/23/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Fastjson%201.2.68-1.2.80%20%E5%88%A9%E7%94%A8/"><span class="title">漏洞篇 - Fastjson 1.2.68 - 1.2.80 利用</span></a><a class="item title" href="/2024/09/06/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-JNDI%E6%B3%A8%E5%85%A5%E8%AF%A6%E8%A7%A3/"><span class="title">漏洞篇 - JNDI 注入详解</span></a><a class="item title" href="/2024/08/28/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-ysoserial%E7%9A%84JRMP%E6%A8%A1%E5%9D%97%E5%88%86%E6%9E%90/"><span class="title">漏洞篇 - ysoserial 的 JRMP 模块分析</span></a><a class="item title" href="/2024/08/28/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-RMI%E7%9B%B8%E5%85%B3%E7%9A%84%E6%94%BB%E5%87%BB/"><span class="title">漏洞篇 - RMI 相关的攻击</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -144,16 +86,15 @@
 
 <div class="article banner top">
   <div class="content">
-    
-<div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java-%E5%AE%89%E5%85%A8/">Java 安全</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-07-11T16:26:03.757Z">2025-07-12</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-07-12T01:19:17.118Z">2025-07-12</time></span></div></div>
-</div>
-
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-07-11T16:26:03.757Z">2025-07-12</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-07-12T01:19:17.118Z">2025-07-12</time></span></div></div></div>
     
-    <div class="bottom">
+    <div class="bottom only-title">
+      
       <div class="text-area">
         <h1 class="text title"><span>RASP 研究，OpenRasp 原理与绕过</span></h1>
+        
       </div>
     </div>
     
@@ -195,15 +136,15 @@
 <li>如果您的 Agent 使用了 <code>agentmain</code>​ 方法进行动态加载，确保目标 JVM 支持动态附加（如 HotSpot JVM）。</li>
 </ul>
 <p>idea 中也可以直接在运行配置中添加虚拟机选项（VM options）：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250708173927-vijkl2m.png">
+<img src="/images/image-20250708173927-vijkl2m.png">
 
 <p>如果没有 虚拟机选项（VM options），点击右边修改选项（Modify options），选择添加虚拟机选项（Add VM options）：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250708174103-gcdx7p9.png">
+<img src="/images/image-20250708174103-gcdx7p9.png">
 
 <p>下面是测试代码与运行结果：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package com.miaoji;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class runtimeTest &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        Runtime.getRuntime().exec(&quot;ipconfig &amp; calc&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250708214650-ot71y0v.png">
+<img src="/images/image-20250708214650-ot71y0v.png">
 
 <h4 id="方法二：动态附加-Agent（无需重启-JVM）"><a href="#方法二：动态附加-Agent（无需重启-JVM）" class="headerlink" title="方法二：动态附加 Agent（无需重启 JVM）"></a>方法二：动态附加 Agent（无需重启 JVM）</h4><p>如果您无法在启动时使用 <code>-javaagent</code>​ 参数，或者需要在运行时动态加载 Agent，可以使用 Java Attach API。</p>
 <p>用下面的代码去实现：</p>
@@ -212,33 +153,33 @@
 <p>首先我们要获取 JVM 进程的 pid ，有多种方式，这里用全类名来查找（一般来说 vmd.displayName() 包含类名或 jar 名）。你也可以在要被 attach 的项目中用 ProcessHandle.current().pid() 来让目标程序在启动日志里打印自己的 pid ，但那样需要修改项目代码。</p>
 <p>Windows 上，Attach API 的 <code>id()</code>​ 与任务管理器看到的 PID <strong>是一致的</strong>。</p>
 <p>其中用到的 com.sun.tools.attach.VirtualMachine 类需要 tools.jar 依赖，IDEA 默认不会导入，我们需要手动导入：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/network-asset-image-20241023173202010-20250708212736-vteva4q.png">
+<img src="/images/network-asset-image-20241023173202010-20250708212736-vteva4q.png">
 
 <p>只要你能获取到 pid ，你可以在任何地方运行上述代码来动态 attach 。</p>
 <p>测试代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package com.miaoji;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class runtimeTest &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        System.out.print(&quot;attach 完成后输入 unlock 解锁：&quot;);</span><br><span class="line">        Scanner in = new Scanner(System.in);</span><br><span class="line">        while (!&quot;unlock&quot;.equalsIgnoreCase(in.nextLine().trim())) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        Runtime.getRuntime().exec(&quot;ipconfig &amp; calc&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>先运行测试代码，再运行 attach 代码，最后输入 unlock：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250708215448-jareduh.png">
+<img src="/images/image-20250708215448-jareduh.png">
 
 <p>以上，我们用 Javassist 实现了一个简单的 RASP 示例，Hook 了 java.lang.Runtime 的 exec 方法，并拦截了 calc 字符串。这种示例仅展示 Rasp 的简单原理，如果想要绕过，还是很简单的，比如用 @ 占位：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd /c &quot;set x=c@lc &amp; echo %x:@=a% | cmd&quot;</span><br></pre></td></tr></table></figure>
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709091431-j6qdst5.png">
+<img src="/images/image-20250709091431-j6qdst5.png">
 
 <p>那拦截办法，加更多的黑名单？或者有没有办法从更底层拦截呢？显然，实际情况下的 RASP 会比这个更复杂。</p>
 <p>‍</p>
 <h2 id="OpenRasp"><a href="#OpenRasp" class="headerlink" title="OpenRasp"></a>OpenRasp</h2><p>由<strong>百度 OAESE</strong> <strong>智能终端安全生态联盟</strong>开源的一款 RASP ，作为我们了解市面上真正应用的 RASP 的窗口。</p>
 <p>下载链接：<a target="_blank" rel="noopener" href="https://github.com/baidu/openrasp">https://github.com/baidu/openrasp</a></p>
 <h3 id="rasp"><a href="#rasp" class="headerlink" title="rasp"></a>rasp</h3><p>刚来不太了解目录结构，定位 Premain-Class ，在 agent&#x2F;java&#x2F;boot&#x2F;pom.xml 文件中找到了相关配置：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709100810-zd23eu3.png">
+<img src="/images/image-20250709100810-zd23eu3.png">
 
 <p>这是以 xml 格式配置的，不过看别人的分析文章是配置在 MANIFEST.MF 里，想来时代变迁，xml 配置因为适配 maven 打包而变得更流行了。</p>
 <p>其中指示了主要的 agent 类为 com.baidu.openrasp.Agent ，直接关注其 premain 与 agentmain 方法：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709102130-jg9i5mo.png">
+<img src="/images/image-20250709102130-jg9i5mo.png">
 
 <p>均调用了 init 方法，继续追踪：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709102210-2fv05bd.png">
+<img src="/images/image-20250709102210-2fv05bd.png">
 
 <p>其中 JarFileHelper.addJarToBootstrap 首先获取 agent 的 Jar 文件路径，然后调用 <code>inst.appendToBootstrapClassLoaderSearch</code>​ 。</p>
 <p>在 Java Agent 里，<code>Instrumentation.appendToBootstrapClassLoaderSearch(JarFile jar)</code>​ 的核心作用，就是<strong>把指定 JAR 加入到 JVM 最顶层的 bootstrap 类加载器的“兜底搜索列表”，</strong> 其等价于运行期的 <code>-Xbootclasspath/a</code>​ 。</p>
@@ -246,10 +187,10 @@
 <p><code>-Xbootclasspath/p</code>​ <strong>把你的 JAR 或目录“放到”引导类加载器（bootstrap class loader）的最前面</strong>，优先级甚至高于 <code>rt.jar</code>​；</p>
 <p><code>-Xbootclasspath/a</code>​ <strong>把它们追加到最后</strong>，只有当 JDK 自己和其它 boot JAR 都没命中时才会去找。</p>
 <p> <strong>&#x2F;p 能覆盖或“热补丁”JDK 核心类</strong>，&#x2F;a 只能让 boot loader 能看到你的新类而不会覆盖旧实现。</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709102328-efdiuv9.png">
+<img src="/images/image-20250709102328-efdiuv9.png">
 
 <p>getLocalJarPath 其关键在于 <code>Agent.class.getProtectionDomain().getCodeSource().getLocation()</code>​ 会在<strong>运行时</strong>返回 <code>Agent</code>​ 这个类究竟是从哪儿加载进 JVM 的——通常是一个指向 <code>agent.jar</code>​ 的 <code>URL</code>​（例如 <code>file:/…/agent.jar</code>​ 或 <code>jar:file:/…/agent.jar!/</code>​），于是就获取了 Jar 路径：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709102649-mhtlsj7.png">
+<img src="/images/image-20250709102649-mhtlsj7.png">
 
 <p>上面这种方式在 agent 中挺常见的，即</p>
 <ol>
@@ -257,19 +198,19 @@
 <li><code>inst.appendToBootstrapClassLoaderSearch(new JarFile(localJarPath))</code>​ 将 Jar 放入 bootstrap 类加载器中，以确保能搜索到类。</li>
 </ol>
 <p>于是，JarFileHelper.addJarToBootstrap 我们就看完了，接下来看 ModuleLoader.load ：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709111105-rjda278.png">
+<img src="/images/image-20250709111105-rjda278.png">
 
 <p>看注释，它用来加载 RASP 模块，其要求三个参数：mode、action 和 inst 。在前面阶段，premain 、agentmain 传入的 mode 分别为 “normal” 和 “attach” ，premain 传入的 action 为 “install” ，agentmain 的 action 需要在运行时手动传入：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709111232-rlygg9x.png">
+<img src="/images/image-20250709111232-rlygg9x.png">
 
 <p>ModuleLoader.load 仅对 action 为 “install” 与 “uninstall” 的调用进行处理。当为 “install” 时初始化一个 ModuleLoader 对象：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709112311-khq4hyn.png">
+<img src="/images/image-20250709112311-khq4hyn.png">
 
 <p>其中，当 mode 为 “normal” 时额外调用一个 setStartupOptionForJboss() 方法，是为了扩展其在 Jboss7 下的兼容性。对于其他 mode ，直接初始化一个 ModuleContainer 对象，并将 ENGINE_JAR 作为参数传入，我们可以看到 ENGINE_JAR 指代 rasp-engine.jar ：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709112558-avkcb9e.png">
+<img src="/images/image-20250709112558-avkcb9e.png">
 
 <p>来看看 ModuleContainer 的构造，<strong>其读取 JAR 中的自定义清单，确认「模块名 + 入口类」，然后把 JAR 动态塞进系统&#x2F;自定义类加载器的搜索路径，再反射加载并实例化入口类：</strong></p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709112707-8lmjv8v.png">
+<img src="/images/image-20250709112707-8lmjv8v.png">
 
 <p>1  读取并校验 JAR 清单</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">JarFile</span> <span class="variable">jarFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JarFile</span>(originFile);</span><br><span class="line"><span class="type">Attributes</span> <span class="variable">attrs</span> <span class="operator">=</span> jarFile.getManifest().getMainAttributes();</span><br><span class="line"><span class="built_in">this</span>.moduleName = attrs.getValue(<span class="string">&quot;Rasp-Module-Name&quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">moduleEnterClassName</span> <span class="operator">=</span> attrs.getValue(<span class="string">&quot;Rasp-Module-Class&quot;</span>);</span><br></pre></td></tr></table></figure>
@@ -303,147 +244,147 @@
 <li>这样每个模块都能实现自己的逻辑，同时被主程序管理。</li>
 </ul>
 <p>这段代码完成以后，会将 Rasp-Module-Class 指示的类实例化并封装进 module 属性中，后续 engineContainer.start 也就是调用 module 属性的 start 方法</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709121135-q9kcwf5.png">
+<img src="/images/image-20250709121135-q9kcwf5.png">
 
 <p>所以，这一部分 agent 指向了一个新的 Jar 包 rasp-engine.jar ，以及其配置文件，其中必包含两个项 Rasp-Module-Name 和 Rasp-Module-Class ，并且 Rasp-Module-Class 指向的类会被实例化，其 start 会被调用。</p>
 <h3 id="rasp-engine"><a href="#rasp-engine" class="headerlink" title="rasp-engine"></a>rasp-engine</h3><p>下载的项目里面并不直接有 rasp-engine.jar 这个文件，但我们可以找到其对应的代码在 agent&#x2F;java&#x2F;engine 目录下。其 pom.xml ：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709114704-qr8nyf8.png">
+<img src="/images/image-20250709114704-qr8nyf8.png">
 
 <p>既然这里又指示了 com.baidu.openrasp.EngineBoot 这个类，顺藤摸瓜找到这个类，在其 Start 方法发现了一个大 logo ：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709121349-ady6xt9.png">
+<img src="/images/image-20250709121349-ady6xt9.png">
 
 <p>缺失了 com.baidu.openrasp.v8 包，导致 com.baidu.openrasp.v8.Loader 找不到，在这里下载：</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/baidu-security/openrasp-v8/tree/4e1398d9e3de81a581c8f465b117abb8399a014d">https://github.com/baidu-security/openrasp-v8/tree/4e1398d9e3de81a581c8f465b117abb8399a014d</a></p>
 <p>不过 Loader.load() 在这里是加载了一个名为 openrasp_v8_java 的库，实质是一段<strong>本地（Native）代码</strong>，暂不关注。</p>
 <p>loadConfig() 完成对日志（log4j、云控、Syslog）的配置，不重要。</p>
 <p>Agent.readVersion() 从 &#x2F;META-INF&#x2F;MANIFEST.MF 中读取配置信息，但是项目并没有 MANIFEST.MF 文件，同样是写在 pom.xml 文件中，其在 maven 打包时会将相关信息写入 jar 的 MANIFEST.MF 文件，使得代码可以读取到这些信息：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709150930-bttpzmu.png">
+<img src="/images/image-20250709150930-bttpzmu.png">
 
 <p>JS.Initialize() 完成了 V8 的初始化还有一些设置，仍然不是很清楚：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709151737-iq02tkz.png">
+<img src="/images/image-20250709151737-iq02tkz.png">
 
 <p>跟进 V8.Initialize() ，最终调用的是一个 native 方法：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709153135-zawarx9.png">
+<img src="/images/image-20250709153135-zawarx9.png">
 
 <p>纯初始化。</p>
 <p>后面的 V8.SetLogger 和 V8.SetStackGetter 设置两个属性 V8.logger 和 V8.stackGetter ，暂时没有看到用法。</p>
 <h4 id="Transformer-配置"><a href="#Transformer-配置" class="headerlink" title="Transformer 配置"></a>Transformer 配置</h4><p>回到 EngineBoot 继续往后看，initTransformer(inst) 很关键，它果然是用来配置转换器的：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709155241-k9ppvrn.png">
+<img src="/images/image-20250709155241-k9ppvrn.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709155254-gccragt.png">
+<img src="/images/image-20250709155254-gccragt.png">
 
 <p>这里添加的转换器是 CustomClassTransformer 自身，那么真正的 hook 代码就藏在其 transform 当中了：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709155531-m383cbb.png">
+<img src="/images/image-20250709155531-m383cbb.png">
 
 <p>这里维护了一个要被 hook 的类的列表 hooks ，通过 addHook 可以向其中添加值。</p>
 <p>对于 hooks 列表中的所有类，调用 hook.transformClass 去修改（通过参数 classfileBuffer 拿到类的字节码）。</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709163339-m6u766d.png">
+<img src="/images/image-20250709163339-m6u766d.png">
 
 <p>hookMethod 有 99 个实现，针对不同的执行点指定了不同的拦截方案：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709163358-vp3m416.png">
+<img src="/images/image-20250709163358-vp3m416.png">
 
 <h4 id="JNDI-Hook"><a href="#JNDI-Hook" class="headerlink" title="JNDI Hook"></a>JNDI Hook</h4><p>找一个比较熟悉的，看看 JNDIHook 中的实现：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709163554-p9al8c8.png">
+<img src="/images/image-20250709163554-p9al8c8.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709165214-aarmewh.png">
+<img src="/images/image-20250709165214-aarmewh.png">
 
 <p>相当于把 com.baidu.openrasp.hook.JNDIHook.checkJNDILookup($1); 插入 lookup 方法开头。</p>
 <p>这个 checkJNDILookup 又干了什么呢？</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709173908-ud20gcw.png">
+<img src="/images/image-20250709173908-ud20gcw.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709174004-uhsiqmt.png">
+<img src="/images/image-20250709174004-uhsiqmt.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709174100-dcaj58j.png">
+<img src="/images/image-20250709174100-dcaj58j.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709174137-zsq51zo.png">
+<img src="/images/image-20250709174137-zsq51zo.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709174202-arbm28h.png">
+<img src="/images/image-20250709174202-arbm28h.png">
 
 <p>追到 checkParam 这里有 7 个实现：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709174303-raloso8.png">
+<img src="/images/image-20250709174303-raloso8.png">
 
 <h4 id="V8AttackChecker"><a href="#V8AttackChecker" class="headerlink" title="V8AttackChecker"></a>V8AttackChecker</h4><p>到底由哪一个 Checker 来处理 JNDI Hook 产生的检测请求，其实早就写死在 CheckParameter.Type 这个枚举里，最开始 checkJNDILookup 传入的第一个参数是 CheckParameter.Type.JNDI ，故而选择 V8AttackChecker 。</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709175031-x1eh1w2.png">
+<img src="/images/image-20250709175031-x1eh1w2.png">
 
 <p>V8AttackChecker 的 checkParam 方法：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709175217-rvr7k8d.png">
+<img src="/images/image-20250709175217-rvr7k8d.png">
 
 <p>JS.Check：</p>
 <p>1、将数据发送到 V8.Check 检查，并获取返回结果：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710093650-khf1wyt.png">
+<img src="/images/image-20250710093650-khf1wyt.png">
 
 <p>2、如果返回结果为空，将其对应的 hashData 加入到缓存 Config.commonLRUCache 中：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710093751-tf6f2g4.png">
+<img src="/images/image-20250710093751-tf6f2g4.png">
 
 <p>这个 hashData 是来自于请求参数转化成的 json 数据，就是这串 json 数据的 hash 值（或者当 json 长度小于某个值时，直接使用 json 数据本身）：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710094003-irdmo59.png">
+<img src="/images/image-20250710094003-irdmo59.png">
 
 <p>3、将返回结果以 json 格式提取出来：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710094623-dc0bith.png">
+<img src="/images/image-20250710094623-dc0bith.png">
 
 <p>V8.Check 实际调用 native 方法 Java_com_baidu_openrasp_v8_V8_Check ，找到这个方法，在 com_baidu_openrasp_v8_V8.cc 文件中：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710095809-hj7fypz.png">
+<img src="/images/image-20250710095809-hj7fypz.png">
 
 <p>这个方法实际上依然是一个中间层，它调用 isolate-&gt;Check 检查，然后处理返回值。</p>
 <p>对于 isolate-&gt;Check ，全局搜索 Isolate::Check ，找到方法定义在 isolate.cc 文件中：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710100422-z16ap8d.png">
+<img src="/images/image-20250710100422-z16ap8d.png">
 
 <p>真正的调用 js 方法的地方：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710112358-323odjb.png">
+<img src="/images/image-20250710112358-323odjb.png">
 
 <p>那我又要问了，它怎么知道要调哪个方法呢？这里面没有看到任何跟 js 文件或是方法有关的位置信息。</p>
 <p>果真如此吗？下面来回答一下：Isolate::Check 何以调用检测脚本？</p>
 <h4 id="js-插件注册"><a href="#js-插件注册" class="headerlink" title="js 插件注册"></a>js 插件注册</h4><p>js 插件文件在 com.baidu.openrasp.plugin.js.JS#UpdatePlugin() 中被加载，并早在 JS.Initialize() 中就被调用过。其中指示了加载 js 文件的路径，为：&lt;rasp_root&gt;&#x2F;plugins 。</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709221558-j7jk22r.png">
+<img src="/images/image-20250709221558-j7jk22r.png">
 
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250709221611-grdf5ed.png">
+<img src="/images/image-20250709221611-grdf5ed.png">
 
-<p>最后调用 UpdatePlugin(scripts) 处理 js 脚本内容：<br>​<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710122345-jgmm2g2.png"></p>
+<p>最后调用 UpdatePlugin(scripts) 处理 js 脚本内容：<br>​<img src="/images/image-20250710122345-jgmm2g2.png"></p>
 <p>这里调用 V8.CreateSnapshot 创建 v8 快照，V8.CreateSnapshot 是一个 native 方法，我们可以找到对应的方法名为 Java_com_baidu_openrasp_v8_V8_CreateSnapshot ：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710124956-ijn0vs1.png">
+<img src="/images/image-20250710124956-ijn0vs1.png">
 
 <p>新建一个 Snapshot 对象，这个对象将 js 插件列表封装进去了。</p>
 <p>在 Snapshot 的构造函数 Snapshot::Snapshot 中，运行了其内建脚本 gen_builtins 、配置脚本 config 、插件脚本 plugin_list ：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711211838-un5z6uo.png">
+<img src="/images/image-20250711211838-un5z6uo.png">
 
 <p>其中调用 isolate-&gt;ExecScript 执行 js 脚本，可以找到其实现 Isolate::ExecScript ，在 isolate.cc 文件中：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711223818-v0qh2bo.png">
+<img src="/images/image-20250711223818-v0qh2bo.png">
 
 <p>在 Isolate::ExecScript 中，代码被编译为 HeapObject（Script &#x2F; SharedFunctionInfo &#x2F; JSFunction），进入 Isolate 的 <strong>JS 堆</strong>。</p>
 <p>后续于是 Isolate::Check 可以找到这些方法并执行（这里不再解释，如果熟悉 C++ ，可以更快理解）。</p>
 <h4 id="RASP-黑名单"><a href="#RASP-黑名单" class="headerlink" title="RASP 黑名单"></a>RASP 黑名单</h4><p>最后来看看真正定义 RASP 拦截的黑名单在哪里。</p>
 <p>&lt;rasp_root&gt;&#x2F;plugins，应该指的是 openrasp-master\plugins 即根目录下的 plugins 目录，其中有一个 plugins&#x2F;official&#x2F;plugin.js 文件，表示官方插件。</p>
 <p>找到 plugins&#x2F;official&#x2F;plugin.js 中针对 Jndi 的处理部分，或者说，针对 Java 的处理部分，主要在 validate_stack_java 方法中：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710092617-n3e9hfs.png">
+<img src="/images/image-20250710092617-n3e9hfs.png">
 
 <p>根据栈上匹配到的类返回不同的信息。</p>
 <p>有意思的是，它对 ysoserial.Pwner 、org.su18 、net.rebeyond.behinder 这种包名也做了匹配，并返回信息说明使用了工具：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250710092805-n0sec5z.png">
+<img src="/images/image-20250710092805-n0sec5z.png">
 
 <h2 id="OpenRasp-绕过"><a href="#OpenRasp-绕过" class="headerlink" title="OpenRasp 绕过"></a>OpenRasp 绕过</h2><p>这里只提出比较浅显的意见，我也只是纸上谈兵，同时结合了 Y4tacker 等前辈的一些观点。</p>
 <p>OpenRasp 对各种漏洞类型都做了防护，防护措施同中存异，所以我们谈绕过，也应该分开的、逐个的来谈。</p>
 <h3 id="1、黑名单绕过"><a href="#1、黑名单绕过" class="headerlink" title="1、黑名单绕过"></a>1、黑名单绕过</h3><p>最容易想到的，实际情况下也是最难做到的，找出黑名单之外的类进行利用，常见于反序列化绕过：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711231228-k38vhtx.png">
+<img src="/images/image-20250711231228-k38vhtx.png">
 
 <p>这个名单看着就不太全的样子。</p>
 <h3 id="2、正则绕过"><a href="#2、正则绕过" class="headerlink" title="2、正则绕过"></a>2、正则绕过</h3><p>譬如命令执行这一块，最低级别的防护：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711231432-emg9fru.png">
+<img src="/images/image-20250711231432-emg9fru.png">
 
 <p>对于 cat 命令就只拦截了 cat &#x2F;etc&#x2F;passwd 操作，cat 其他文件那是睁一只眼闭一只眼。或者就像 Y4tacker 师傅说的，cat 函数支持同时读多个文件，像这样操作：cat &#x2F;abc&#x2F;def &#x2F;etc&#x2F;passwd 。</p>
 <h3 id="3、业务逻辑绕过"><a href="#3、业务逻辑绕过" class="headerlink" title="3、业务逻辑绕过"></a>3、业务逻辑绕过</h3><p>举个例子，xxe 这块对其他协议直接拉黑，但对于 file:&#x2F;&#x2F; 协议就只是记录日志：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711232333-2vbeczb.png">
+<img src="/images/image-20250711232333-2vbeczb.png">
 
 <p>为什么呢？可能有些正常业务它要用这个 file:&#x2F;&#x2F; 协议。所以这就引出一个关键问题：RASP 在很底层，如果限制太多，可能正常程序都跑不起来。在兼容性要求下，RASP 就不能拦得太死。</p>
 <p>在前面分析代码的时候，其实也遇到了这么一个地方：服务器的 cpu 使用率超过 90% ，以及云控注册成功之前，禁用全部 hook 点：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711233005-xl9mfo9.png">
+<img src="/images/image-20250711233005-xl9mfo9.png">
 
 <p>这也是为业务让路的一种体现，Y4tacker 师傅专门为这个点写了示例程序，就不再赘述。</p>
 <p>当前，前面提到的命令执行，除了正则过滤，还有一种模式是全部禁用：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711234602-rqrtiqr.png">
+<img src="/images/image-20250711234602-rqrtiqr.png">
 
 <p>为什么要设置两种模式呢？低级别的防护用于兼容正常需要执行命令的系统，所以这也是一种体现。</p>
 <h3 id="4、覆盖文件"><a href="#4、覆盖文件" class="headerlink" title="4、覆盖文件"></a>4、覆盖文件</h3><p>覆盖文件分为两种，一种是覆盖 js 插件文件，因为黑名单就写在插件文件里。并且我们可以看到 OpenRasp 中对于上传 html&#x2F;js 文件是采取直接忽略的方式：</p>
-<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250711233738-5fgbhuk.png">
+<img src="/images/image-20250711233738-5fgbhuk.png">
 
 <p>还有一种思路就是直接覆盖 Rasp 的 jar 文件，Rasp 本质上还是 agent ，一般以 jar 文件形式生效，如果能够覆盖，那么可以直接禁掉 Rasp 。OpenRasp 中并没有对上传 jar 文件有拦截。但是可能需要服务器重启才能生效，且 Windows 下可能会因为文件正在运行，进程占用无法覆盖。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上几种方式，我认为利用第三种方式是最可能的，就像先前说的，RASP 处在很底层，真正要布置到实际环境中一定要考虑对程序的兼容性，不能影响程序自身的逻辑，为此，要么降低黑名单强度，要么为程序设计定制化的 RASP ，如此便削弱了其防护能力。</p>
@@ -453,9 +394,9 @@
 <p><a target="_blank" rel="noopener" href="https://stoocea.github.io/post/Rasp%E5%88%86%E6%9E%90%5B1%5D-%E7%AE%80%E5%8D%95%E6%9C%BA%E5%88%B6%E5%AD%A6%E4%B9%A0.html">https://stoocea.github.io/post/Rasp%E5%88%86%E6%9E%90%5B1%5D-%E7%AE%80%E5%8D%95%E6%9C%BA%E5%88%B6%E5%AD%A6%E4%B9%A0.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://y4tacker.github.io/2022/05/28/year/2022/5/OpenRasp%E5%88%86%E6%9E%90">https://y4tacker.github.io/2022/05/28/year/2022/5/OpenRasp%E5%88%86%E6%9E%90</a></p>
 <p>‍</p>
-
-
 </article>
+
+
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/08/23/Java%20%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%AF%87-Fastjson%201.2.68-1.2.80%20%E5%88%A9%E7%94%A8/">漏洞篇 - Fastjson 1.2.68 - 1.2.80 利用</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/06/02/CTF/2025%20D%5E3CTF%20Web%20WP/">2025 D^3CTF Web WP</a></div></section></div>
 
 
@@ -463,18 +404,108 @@
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">妙尽璇机</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.8">Stellar 1.26.8</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">妙尽璇机</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
-<div class='float-panel mobile-only blur' style='display:none'>
-  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#RASP-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">RASP 快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RASP-%E7%94%9F%E6%88%90"><span class="toc-text">RASP 生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RASP-%E4%BD%BF%E7%94%A8"><span class="toc-text">RASP 使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%9C%A8%E5%90%AF%E5%8A%A8%E6%97%B6%E9%80%9A%E8%BF%87-javaagent%E2%80%8B-%E5%8F%82%E6%95%B0%E5%8A%A0%E8%BD%BD"><span class="toc-text">方法一：在启动时通过 -javaagent​ 参数加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%8A%A8%E6%80%81%E9%99%84%E5%8A%A0-Agent%EF%BC%88%E6%97%A0%E9%9C%80%E9%87%8D%E5%90%AF-JVM%EF%BC%89"><span class="toc-text">方法二：动态附加 Agent（无需重启 JVM）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenRasp"><span class="toc-text">OpenRasp</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rasp"><span class="toc-text">rasp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rasp-engine"><span class="toc-text">rasp-engine</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Transformer-%E9%85%8D%E7%BD%AE"><span class="toc-text">Transformer 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JNDI-Hook"><span class="toc-text">JNDI Hook</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#V8AttackChecker"><span class="toc-text">V8AttackChecker</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js-%E6%8F%92%E4%BB%B6%E6%B3%A8%E5%86%8C"><span class="toc-text">js 插件注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RASP-%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-text">RASP 黑名单</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenRasp-%E7%BB%95%E8%BF%87"><span class="toc-text">OpenRasp 绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%BB%91%E5%90%8D%E5%8D%95%E7%BB%95%E8%BF%87"><span class="toc-text">1、黑名单绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%AD%A3%E5%88%99%E7%BB%95%E8%BF%87"><span class="toc-text">2、正则绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E7%BB%95%E8%BF%87"><span class="toc-text">3、业务逻辑绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%A6%86%E7%9B%96%E6%96%87%E4%BB%B6"><span class="toc-text">4、覆盖文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
   </button>
 </div>
-<div class="main-mask" onclick="sidebar.toggle()"></div></div></div><div class="scripts">
+</div><div class="scripts">
+
+
 <script type="text/javascript">
-  const stellar = {
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
     // 懒加载 css https://github.com/filamentgroup/loadCSS
-    loadCSS: (href, before, media, attributes) => {
+    css: (href, before, media, attributes) => {
       var doc = window.document;
       var ss = doc.createElement("link");
       var ref;
@@ -532,11 +563,10 @@
       return ss;
     },
 
-    // 从 butterfly 和 volantis 获得灵感
-    loadScript: (src, opt) => new Promise((resolve, reject) => {
+    js: (src, opt) => new Promise((resolve, reject) => {
       var script = document.createElement('script');
-      if (src.startsWith('/')){
-        src = stellar.config.root + src.substring(1);
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
       }
       script.src = src;
       if (opt) {
@@ -548,7 +578,7 @@
         script.async = true
       }
       script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
+      script.onload = script.onreadystatechange = function () {
         const loadState = this.readyState
         if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
         script.onload = script.onreadystatechange = null
@@ -557,78 +587,539 @@
       document.head.appendChild(script)
     }),
 
-    // https://github.com/jerryc127/hexo-theme-butterfly
-    jQuery: (fn) => {
+    jq: (fn) => {
       if (typeof jQuery === 'undefined') {
-        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+        utils.js(deps.jquery).then(fn)
       } else {
         fn()
       }
-    }
-  };
-  stellar.version = '1.26.8';
-  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.8';
-  stellar.config = {
-    date_suffix: {
-      just: '刚刚',
-      min: '分钟前',
-      hour: '小时前',
-      day: '天前',
-      month: '个月前',
     },
-    root : '/',
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
   };
 
-  // required plugins (only load if needs)
-  stellar.plugins = {
-    jQuery: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js'
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
   };
-
-  if ('local_search') {
-    stellar.search = {};
-    stellar.search.service = 'local_search';
-    if (stellar.search.service == 'local_search') {
-      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
-      stellar.search[stellar.search.service] = service_obj;
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
     }
   }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
 
-  // stellar js
-  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js","memos":"/js/plugins/memos.js","marked":"/js/plugins/marked.js"});
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
 
-  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
-  // optional plugins
-  if ('true' == 'true') {
-    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js","transition":"fade"});
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
   }
-  if ('true' == 'true') {
-    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
-  }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
-  }
-  if ('true' == 'true') {
-    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});
-  }
-  if ('true' == 'true') {
-    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js","css":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css","selector":null});
-  }
-  if ('false' == 'true') {
-    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
-  }
-  if ('true' == 'true') {
-    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied","toast":"复制成功"});
-  }
+  
 </script>
 
 <!-- required -->
-<script src="/js/main.js?v=1.26.8" async></script>
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
 
 <!-- optional -->
 
 
 
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
 
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
 
 
 <!-- inject -->
